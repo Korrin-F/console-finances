@@ -103,28 +103,42 @@ for(var i = 0; i < finances.length; i++){
   var money = finances[i][1];
   netTotal = netTotal+money
 }
-console.log(netTotal); //38382578 correct
+console.log("Net total: " + netTotal); //38382578 correct
 
 //* The average of the **changes** in Profit/Losses over the entire period.
 //* You will need to track what the total change in Profit/Losses are from month to month and then find the average.
   // iterate over the original array and then store the changes in a new array (date and amount).
   // skip the first month
 var changes =[];
-console.log(finances[1][0]);
+//console.log(finances[1][0]);
 for(var i=0; i<finances.length; i++){
    if (i===0){
       changes[i] = [finances[i][0], undefined];
-      console.log("First entry: "+ changes[i]);
+      //console.log("First entry: "+ changes[i]);
    }else{
     var currentMonth = finances[i][1];
     var prevMonth = finances[i-1][1];
     var monthName = finances[i][0];
       changes[i]=[monthName, currentMonth-prevMonth];
-      console.log("New entry: " + changes[i]);
+      //console.log("New entry: " + changes[i]);
    }
 }
-
+// remove first entry in changes array as it contains an outlier
+//console.log(changes[0]);
+changes.splice(0,1);
+//console.log(changes[0]);
   //* (`Total/(Number of months - 1)`)
+
+var changesTotal = 0;
+for(var i = 0; i < changes.length; i++){
+  var money = changes[i][1];
+  changesTotal = changesTotal+money;
+}
+console.log("Total changes amount: "+ changesTotal);
+
+var averageChange = (changesTotal/(totalMonths -1));
+// reslut printed to two decimal places
+console.log("Average change amount: " + averageChange.toFixed(2));
 
 //* The greatest increase in Profit/Losses (date and amount) over the entire period.
 // look for the highest number in the changes array
