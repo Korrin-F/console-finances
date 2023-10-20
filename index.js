@@ -142,6 +142,17 @@ console.log("Average change amount: " + averageChange.toFixed(2));
 
 //* The greatest increase in Profit/Losses (date and amount) over the entire period.
 // look for the highest number in the changes array
+var highestValue = 0;
+var highestPosition = 0;
+for(var i = 0; i < changes.length; i++){
+  var currentValue = changes[i][1];
+  if(currentValue > highestValue){
+    highestValue = currentValue;
+    console.log("New highest value of : " + highestValue + " at index " + i);
+    highestPosition = changes[i];
+    console.log("New highest position: " + highestPosition);
+  }
+}
 
 //* The greatest decrease in Profit/Losses (date and amount) over the entire period.
 // look for the lowest number in the changes array.
