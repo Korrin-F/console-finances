@@ -103,11 +103,26 @@ for(var i = 0; i < finances.length; i++){
   var money = finances[i][1];
   netTotal = netTotal+money
 }
-//console.log(netTotal); 38382578 correct
+console.log(netTotal); //38382578 correct
 
 //* The average of the **changes** in Profit/Losses over the entire period.
-  //* You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+//* You will need to track what the total change in Profit/Losses are from month to month and then find the average.
   // iterate over the original array and then store the changes in a new array (date and amount).
+  // skip the first month
+var changes =[];
+console.log(finances[1][0]);
+for(var i=0; i<finances.length; i++){
+   if (i===0){
+      changes[i] = [finances[i][0], undefined];
+      console.log("First entry: "+ changes[i]);
+   }else{
+    var currentMonth = finances[i][1];
+    var prevMonth = finances[i-1][1];
+    var monthName = finances[i][0];
+      changes[i]=[monthName, currentMonth-prevMonth];
+      console.log("New entry: " + changes[i]);
+   }
+}
 
   //* (`Total/(Number of months - 1)`)
 
