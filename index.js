@@ -88,11 +88,12 @@ var finances = [
 ];
 
 //Your task is to write JavaScript code that analyzes the records to calculate each of the following:
-
+console.log("Financial Analysis");
+console.log("__________________");
 //* The total number of months included in the dataset.
 // there is one month per entry so I need to just calculate the length of the array 
 var totalMonths = finances.length 
-
+console.log("Total Months: " + totalMonths);
 
 //* The net total amount of Profit/Losses over the entire period.
 // create a variable to store the total
@@ -103,7 +104,7 @@ for(var i = 0; i < finances.length; i++){
   var money = finances[i][1];
   netTotal = netTotal+money
 }
-console.log("Net total: " + netTotal); //38382578 correct
+console.log("Total: " + "$" + netTotal); //38382578 correct
 
 //* The average of the **changes** in Profit/Losses over the entire period.
 //* You will need to track what the total change in Profit/Losses are from month to month and then find the average.
@@ -134,40 +135,44 @@ for(var i = 0; i < changes.length; i++){
   var money = changes[i][1];
   changesTotal = changesTotal+money;
 }
-console.log("Total changes amount: "+ changesTotal);
+//console.log("Total changes amount: "+ changesTotal);
 
 var averageChange = (changesTotal/(totalMonths -1));
 // reslut printed to two decimal places
-console.log("Average change amount: " + averageChange.toFixed(2));
+console.log("Average Change: " + averageChange.toFixed(2));
 
 //* The greatest increase in Profit/Losses (date and amount) over the entire period.
 // look for the highest number in the changes array
-var highestValue = 0;
-var highestPosition = 0;
+var highestValue = 0; // the highest number value
+var highestPosition = 0; // the index location of the highest entry
+var highestEntry = 0; // the full entry string of the highest positon.
 for(var i = 0; i < changes.length; i++){
   var currentValue = changes[i][1];
   if(currentValue > highestValue){
     highestValue = currentValue;
-    console.log("New highest value of : " + highestValue + " at index " + i);
-    highestPosition = changes[i];
-    console.log("New highest position: " + highestPosition);
+    //console.log("New highest value of : " + highestValue + " at index " + i);
+    highestEntry = changes[i];
+    //console.log("New highest position: " + highestEntry);
+    highestPosition = i;
   }
 }
-
+console.log("Greatest Increase in Profits/Losses: " + changes[highestPosition][0] + " ($" + changes[highestPosition][1] + ")");
 //* The greatest decrease in Profit/Losses (date and amount) over the entire period.
 // look for the lowest number in the changes array.
 var lowestValue = 0;
 var lowestPosition = 0;
+var lowestEntry = 0;
 for(var i = 0; i < changes.length; i++){
   var currentValue = changes[i][1];
   if(currentValue < lowestValue){
     lowestValue = currentValue;
-    console.log("New lowest value of : " + lowestValue + " at index " + i);
-    lowestPosition = changes[i];
-    console.log("New lowest position: " + lowestPosition);
+    //console.log("New lowest value of : " + lowestValue + " at index " + i);
+    lowestEntry = changes[i];
+    //console.log("New lowest position: " + lowestPosition);
+    lowestPosition = i;
   }
 }
-
+console.log("Greatest Decrease in Profits/Losses: " + changes[lowestPosition][0] + " ($" + changes[lowestPosition][1] + ")");
 //When you open your code in the browser your resulting analysis should look similar to the following (the numbers are correct):
 // console log the following values as shown
 /*
