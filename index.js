@@ -86,3 +86,48 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+//Your task is to write JavaScript code that analyzes the records to calculate each of the following:
+
+//* The total number of months included in the dataset.
+// there is one month per entry so I need to just calculate the length of the array 
+var totalMonths = finances.length 
+
+
+//* The net total amount of Profit/Losses over the entire period.
+// create a variable to store the total
+var netTotal = 0;
+// iterate over the array and grab the second value of each sub-array.
+// add this value to the total.
+for(var i = 0; i < finances.length; i++){
+  var money = finances[i][1];
+  netTotal = netTotal+money
+}
+//console.log(netTotal); 38382578 correct
+
+//* The average of the **changes** in Profit/Losses over the entire period.
+  //* You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+  // iterate over the original array and then store the changes in a new array (date and amount).
+
+  //* (`Total/(Number of months - 1)`)
+
+//* The greatest increase in Profit/Losses (date and amount) over the entire period.
+// look for the highest number in the changes array
+
+//* The greatest decrease in Profit/Losses (date and amount) over the entire period.
+// look for the lowest number in the changes array.
+
+//When you open your code in the browser your resulting analysis should look similar to the following (the numbers are correct):
+// console log the following values as shown
+/*
+  
+  Financial Analysis 
+  ----------------
+  Total Months: 86
+  Total: $38382578
+  Average Change: -2315.12
+  Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
+  Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
+  */
+
+//Your final code should print the analysis to the console.
