@@ -156,6 +156,17 @@ for(var i = 0; i < changes.length; i++){
 
 //* The greatest decrease in Profit/Losses (date and amount) over the entire period.
 // look for the lowest number in the changes array.
+var lowestValue = 0;
+var lowestPosition = 0;
+for(var i = 0; i < changes.length; i++){
+  var currentValue = changes[i][1];
+  if(currentValue < lowestValue){
+    lowestValue = currentValue;
+    console.log("New lowest value of : " + lowestValue + " at index " + i);
+    lowestPosition = changes[i];
+    console.log("New lowest position: " + lowestPosition);
+  }
+}
 
 //When you open your code in the browser your resulting analysis should look similar to the following (the numbers are correct):
 // console log the following values as shown
